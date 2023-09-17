@@ -1,0 +1,62 @@
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.Ellipse;
+import java.lang.Object;
+import javafx.scene.Node;
+import javafx.scene.shape.Shape;
+import javafx.scene.shape.Ellipse;
+
+public class Controller extends Shape {
+
+    @FXML
+    public Button lineButton, rectangleButton, elipseButton;
+    @FXML
+    public ColorPicker strokeColorPicker, fillColorPicker;
+    public void selectShape(ActionEvent event){
+        if(lineButton.isPressed()){
+            Line line = new Line();
+            line.setStartX(100);
+            line.setStartY(100);
+            line.setEndX(200);
+            line.setEndY(200);
+            line.setStrokeWidth(5);
+            line.setStrokeColor(selectStrokeColor());
+            line.setColor(selectColor());
+        } else if(rectangleButton.isPressed()){
+            Rectangle rectangle = new Rectangle();
+            rectangle.setX(100);
+            rectangle.setY(100);
+            rectangle.setWidth(100);
+            rectangle.setHeight(100);
+            rectangle.setFill(selectColor());
+            rectangle.setStrokeWidth(5);
+            rectangle.setStroke(selectStrokeColor());
+
+        } else if(elipseButton.isPressed()){
+            Elipse elipse = new Elispe();
+            ellipse.setCenterX(100);
+            ellipse.setCenterY(100);
+            ellipse.setRadiusX(75);
+            ellipse.setRadiusY(50);
+            elipse.Fill(selectColor());
+            elipse.setStrokeWidth(5);
+            elipse.stroke(selectStrokeColor());
+        }
+    }
+
+    public Color selectColor(ActionEvent event){
+        Color fillColor = fillColorPicker.getValue();
+        return fillColor;
+    }
+
+    public Color selectStrokeColor(ActionEvent event){
+        Color fillStrokeColor = strokeColorPicker.getValue();
+        return fillStrokeColor;
+    }
+}
